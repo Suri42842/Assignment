@@ -1,0 +1,464 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Assignment</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 0;
+    }
+
+    header .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #2b4eff;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    nav ul li a:hover {
+      color: #2b4eff;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 70px 0;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #2b4eff;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 35px;
+    }
+
+    .btn {
+      padding: 12px 30px;
+      background: #2b4eff;
+      color: white;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      display: inline-block;
+    }
+
+    .hero-image img {
+      width: 300px;
+      height: 200px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .features {
+      margin: 80px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .feature {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .feature img {
+      width: 120px;
+      height: 80px;
+      margin-bottom: 20px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .feature h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #2b4eff;
+    }
+
+    .about {
+      padding: 60px 0;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about img {
+      width: 300px;
+      height: 200px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      color: #2b4eff;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .testimonials {
+      margin: 80px 0;
+      text-align: center;
+    }
+
+    .testimonials h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #2b4eff;
+    }
+
+    .testimonial-cards {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .testimonial {
+      background: white;
+      width: 300px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 7px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    .pricing {
+      margin: 80px 0;
+      text-align: center;
+    }
+
+    .pricing h2 {
+      font-size: 2rem;
+      color: #2b4eff;
+      margin-bottom: 30px;
+    }
+
+    .pricing-table {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .price-card {
+      background: white;
+      width: 300px;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 3px 7px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .price-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .price-card .amount {
+      font-size: 2.2rem;
+      color: #2b4eff;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .price-card ul {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .price-card ul li {
+      padding: 5px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .contact {
+      margin: 80px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .contact form {
+      background: white;
+      padding: 25px;
+      width: 50%;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .contact input, .contact textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    footer {
+      background: #1e1e1e;
+      color: white;
+      padding: 50px 0;
+      margin-top: 50px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    footer h3 {
+      margin-bottom: 15px;
+      color: #2b4eff;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer ul li {
+      margin: 8px 0;
+      color: #ccc;
+    }
+
+    footer ul li:hover {
+      color: white;
+      cursor: pointer;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      border-top: 1px solid #444;
+      padding-top: 20px;
+      font-size: 0.9rem;
+      color: #bbb;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header>
+      <div class="first.jfif">MyCompany</div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Grow Your Business With Smart Automation</h1>
+        <p>Automate repetitive tasks, improve efficiency, and accelerate your business growth with our modern automation platform.</p>
+        <a href="#" class="btn">Get Started</a>
+      </div>
+      <div class="hero-image">
+        <img src="second.jfif">
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feature">
+        <img src="third.jfif">
+        <h3>AI Automation</h3>
+        <p>Let AI handle your repetitive work and save valuable time.</p>
+      </div>
+
+      <div class="feature">
+        <img src="fourth.jfif">
+        <h3>Secure Data</h3>
+        <p>Your business data stays protected with industry-leading encryption.</p>
+      </div>
+
+      <div class="feature">
+        <img src="first.jfif">
+        <h3>24/7 Support</h3>
+        <p>Our support team is always here to assist you.</p>
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="about-text">
+        <h2>About Our Platform</h2>
+        <p>We help companies automate workflows and scale operations effortlessly. Our tools improve team collaboration, reduce manual tasks, and enhance overall productivity.</p>
+        <p>Trusted by over 500+ businesses globally.</p>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <h2>What Our Clients Say</h2>
+
+      <div class="testimonial-cards">
+
+        <div class="testimonial">
+          <p>"This automation platform transformed our workflow!"</p>
+          <strong>- Arun Kumar, CEO</strong>
+        </div>
+
+        <div class="testimonial">
+          <p>"We saved 20+ hours per week thanks to smart automation."</p>
+          <strong>- Priya, Operations Head</strong>
+        </div>
+
+        <div class="testimonial">
+          <p>"Excellent support team. Highly recommended!"</p>
+          <strong>- Sivaram, Founder</strong>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="pricing">
+      <h2>Pricing Plans</h2>
+      <div class="pricing-table">
+
+        <div class="price-card">
+          <h3>Basic</h3>
+          <div class="amount">$19/mo</div>
+          <ul>
+            <li>10 Automations</li>
+            <li>Email Support</li>
+            <li>Basic Insights</li>
+          </ul>
+          <a href="#" class="btn">Choose Plan</a>
+        </div>
+
+        <div class="price-card">
+          <h3>Pro</h3>
+          <div class="amount">$49/mo</div>
+          <ul>
+            <li>Unlimited Automations</li>
+            <li>24/7 Support</li>
+            <li>Advanced Analytics</li>
+          </ul>
+          <a href="#" class="btn">Choose Plan</a>
+        </div>
+
+        <div class="price-card">
+          <h3>Enterprise</h3>
+          <div class="amount">$99/mo</div>
+          <ul>
+            <li>Custom Solutions</li>
+            <li>Dedicated Manager</li>
+            <li>Full Integration</li>
+          </ul>
+          <a href="#" class="btn">Choose Plan</a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="contact">
+      <form>
+        <h2>Contact Us</h2>
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email">
+        <textarea rows="5" placeholder="Message"></textarea>
+        <button class="btn">Send Message</button>
+      </form>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="container footer-grid">
+
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li>About</li>
+          <li>Careers</li>
+          <li>Blog</li>
+          <li>Press</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Products</h3>
+        <ul>
+          <li>Automation</li>
+          <li>CRM Tools</li>
+          <li>Integrations</li>
+          <li>API Access</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Support</h3>
+        <ul>
+          <li>Help Center</li>
+          <li>Live Chat</li>
+          <li>Documentation</li>
+          <li>Community</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 MyCompany. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
